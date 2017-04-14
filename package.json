@@ -5,14 +5,16 @@
   "main": "dist/autobindr.js",
   "module": "src/index.js",
   "scripts": {
+    "lint": "eslint ./src",
     "test": "cross-env NODE_ENV=test mocha --require babel-register ./test/src.js",
     "test:watch": "npm test -- --watch",
     "test:build": "npm test -- ./test/dist.js",
-    "build": "cross-env NODE_ENV=production rollup -c",
-    "compress": "uglifyjs dist/autobindr.js -c -m > ./dist/autobindr.min.js",
-    "dist": "npm-run-all build compress test:build",
-    "dist:commit": "git checkout HEAD . && git add ./dist && git commit -m 'Update dist'",
-    "lint": "eslint ./src"
+    "test:cov": "nyc npm test",
+    "build:umd": "cross-env NODE_ENV=production rollup -c",
+    "build:min": "uglifyjs dist/autobindr.js -c -m > ./dist/autobindr.min.js",
+    "build": "npm-run-all build:umd build:min test:build",
+    "commit:build": "npm run build && git checkout HEAD . && git add ./dist && git commit -m 'Update dist'",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "repository": {
     "type": "git",
@@ -35,10 +37,12 @@
     "babel-core": "^6.24.1",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-es2015": "^6.24.1",
+    "codecov": "^2.1.0",
     "cross-env": "^4.0.0",
     "eslint": "^3.19.0",
     "mocha": "^3.2.0",
     "npm-run-all": "^4.0.2",
+    "nyc": "^10.2.0",
     "rollup": "^0.41.6",
     "rollup-plugin-babel": "^2.7.1",
     "uglify-js": "^2.8.22"
