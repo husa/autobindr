@@ -29,9 +29,9 @@ export default function autobind (context = throwArgErr('context'), options = {}
 
   const proto = Object.getPrototypeOf(context);
 
-  let methods = only.length ? only : Object.getOwnPropertyNames(proto);
+  const methods = only.length ? only : Object.getOwnPropertyNames(proto);
 
-  methods = methods
+  methods
     .filter(m => skip.indexOf(m) === -1)
     .filter(m => pattern.test(m))
     .forEach(name => {
