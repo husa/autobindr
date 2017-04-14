@@ -1,6 +1,15 @@
 language: node_js
 node_js:
-- "7"
+- '7'
 script:
 - npm run lint
 - npm test && npm run dist
+deploy:
+  provider: npm
+  skip_cleanup: true
+  email: husnaj23@gmail.com
+  api_key:
+    secure: XxMEfduRRXSV0EXOvMaWvLHKbb5c9F95R/6n8kcuLNMb1c3H0wXlEfMWlmc2Y89+rvJs+1rLxcbxydUguLo7vRYEQw676NB3gyuYuDDR/FmZVC+IvLkfLpWYZDEa3YR2ERa+1y5firAny5mxSQv5Ji/VO4jwc9aUQjbBqKeuazmCENC5c6doRyLQb8kFBC0Nu4h98qjS72Wa1KsTI0kRAGCudCb6l2xGQJImoBkLu8pH27nnFLLe5HldfSDEmNg4edlWcfMHkIIZTMIx0Z22LdjO74HIPZFdABfSxlFiXNHh88Yg911sTlEStTbil0e7BNiSJoMecAjxfCN98/VXEEvjMa7LE/EbRFF+j+TzadWHeWVgLNGjzWuOa7LG6bmM4x6pF+TKH4FnV3AK79D1t1GtODzaWPyPBZcZw3Z0ZEtGIfgKBH2epg1cU4ckZViAz+2ZhIMndVTQ7dY0RGmut/bZpNwAjBKAfbkPNbMi3Qvf4UkF72szkbINCmcU5t70R1rD+xr4Tij7mUteHupRIhqCcn5EBKCNl8dwPAMPkvdcqIxDIX0eo5IW7+yaVhRUQA8v5/bXGDgIA0QvpfTmScUxxC6rSfPxiB5UQ8cdnR6qvlEhorOsA7C+E6/3Md82iVCZzhswDHG6+6b/Bt4VIahnV/lea9mDaTefYk5iywQ=
+  on:
+    tags: true
+    repo: husa/autobindr
