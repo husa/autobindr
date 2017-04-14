@@ -10,6 +10,8 @@
     "test:build": "npm test -- ./test/dist.js",
     "build": "cross-env NODE_ENV=production rollup -c",
     "compress": "uglifyjs dist/autobindr.js -c -m > ./dist/autobindr.min.js",
+    "dist": "npm-run-all build compress test:build",
+    "dist:commit": "git checkout HEAD . && git add ./dist && git commit -m 'Update dist'",
     "lint": "eslint ./src"
   },
   "repository": {
@@ -36,6 +38,7 @@
     "cross-env": "^4.0.0",
     "eslint": "^3.19.0",
     "mocha": "^3.2.0",
+    "npm-run-all": "^4.0.2",
     "rollup": "^0.41.6",
     "rollup-plugin-babel": "^2.7.1",
     "uglify-js": "^2.8.22"

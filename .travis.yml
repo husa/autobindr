@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "7"
+- "7"
 script:
-  - npm run lint
-  - npm test && npm run build && npm run compress && npm run test:build
+- npm run lint
+- npm test && npm run dist
