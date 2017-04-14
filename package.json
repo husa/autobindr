@@ -8,6 +8,7 @@
     "test": "cross-env NODE_ENV=test mocha --require babel-register ./test",
     "test:watch": "npm test -- --watch",
     "build": "cross-env NODE_ENV=production rollup -c",
+    "compress": "uglifyjs dist/autobindr.js -c -m > ./dist/autobindr.min.js",
     "lint": "eslint ./src"
   },
   "repository": {
@@ -35,6 +36,7 @@
     "eslint": "^3.19.0",
     "mocha": "^3.2.0",
     "rollup": "^0.41.6",
-    "rollup-plugin-babel": "^2.7.1"
+    "rollup-plugin-babel": "^2.7.1",
+    "uglify-js": "^2.8.22"
   }
 }
