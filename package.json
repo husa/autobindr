@@ -13,7 +13,7 @@
     "build:umd": "cross-env NODE_ENV=production rollup -c",
     "build:min": "uglifyjs dist/autobindr.js -c -m > ./dist/autobindr.min.js",
     "build": "npm-run-all build:umd build:min test:build",
-    "commit:build": "npm run build && git checkout HEAD . && git add ./dist && git commit -m 'Update dist'",
+    "commit:build": "npm run build && git reset HEAD . && git add ./dist && git commit -m 'Update dist'",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "repository": {
