@@ -34,10 +34,12 @@ export default function autobind (context = throwArgErr('context'), options = {}
   methods
     .filter(m => skip.indexOf(m) === -1)
     .filter(m => pattern.test(m))
-    .forEach(name => {
-      const {value: fn} = Object.getOwnPropertyDescriptor(proto, name);
-      if (typeof fn !== 'function') return;
-
+    .map(name => ({
+      name,
+      fn: Object.getOwnPropertyDescriptor(proto, name).value
+    }))
+    .filter(({fn}) => typeof fn === 'function')
+    .forEach(({name, fn}) => {
       Object.defineProperty(context, name, {
         configurable: true,
         enumerable: false,
