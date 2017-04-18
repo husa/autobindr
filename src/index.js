@@ -36,6 +36,7 @@ export default function autobind (context = throwArgErr('context'), options = {}
     .filter(m => pattern.test(m))
     .forEach(name => {
       const {value: fn} = Object.getOwnPropertyDescriptor(proto, name);
+      if (typeof fn !== 'function') return;
 
       Object.defineProperty(context, name, {
         configurable: true,

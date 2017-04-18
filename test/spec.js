@@ -177,5 +177,26 @@ export default function test (autobind) {
       const test = new Test;
       deepEqual(Object.keys(test), ['prop']);
     });
+
+    it('should filter out non function properties injected into prototype', function () {
+      class Test {
+        constructor () {
+          this.prop = 10;
+
+          autobind(this);
+        }
+
+        do () {return this.prop;}
+      }
+      Test.prototype.bool = false;
+      Test.prototype.num = 10;
+      Test.prototype.arr = [1, 2, 3];
+      Test.prototype.obj = {a: true};
+      Test.prototype.func = function () {return this.prop;};
+
+      const test = new Test;
+      withContext(test.do);
+      withContext(test.func);
+    });
   });
 }
