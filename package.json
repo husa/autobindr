@@ -14,7 +14,8 @@
     "build:min": "uglifyjs dist/autobindr.js -c -m > ./dist/autobindr.min.js",
     "build": "npm-run-all build:umd build:min test:build",
     "commit:build": "npm run build && git reset HEAD . && git add ./dist && git commit -m 'Update dist'",
-    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "precommit": "npm test"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,7 @@
     "codecov": "^2.1.0",
     "cross-env": "^4.0.0",
     "eslint": "^3.19.0",
+    "husky": "^0.13.3",
     "mocha": "^3.2.0",
     "npm-run-all": "^4.0.2",
     "nyc": "^10.2.0",
