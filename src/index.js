@@ -1,4 +1,4 @@
-// Skip Reaсt lifecycle methods
+// Skip React lifecycle methods
 const defaultSkip = [
   'constructor',
   'componentWillMount',
