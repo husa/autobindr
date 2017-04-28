@@ -35,9 +35,9 @@ autobind(this);
 ```
 npm install --save autobindr
 ```
-This assumes that you’re using [npm](http://npmjs.com/) package manager with a module bundler like [Webpack](https://webpack.js.org/),[Rollup](https://rollupjs.org/) or [Browserify](http://browserify.org/) to consume [CommonJS modules](http://webpack.github.io/docs/commonjs.html).
+This assumes that you’re using [npm](http://npmjs.com/) package manager with a module bundler like [Webpack](https://webpack.js.org/), [Rollup](https://rollupjs.org/) or [Browserify](http://browserify.org/) to consume [CommonJS modules](http://webpack.github.io/docs/commonjs.html).
 
-If you don’t yet use [npm](http://npmjs.com/) or a modern module bundler, and would rather prefer a single-file [UMD](https://github.com/umdjs/umd) build that makes `autobind` function available as a global. You can grab the latest version [here](https://raw.githubusercontent.com/husa/autobindr/master/dist/autobindr.js), or minified - [here](https://raw.githubusercontent.com/husa/autobindr/master/dist/autobindr.min.js), although I **don't recommend** you to do so.
+If you don’t yet use [npm](http://npmjs.com/) or a modern module bundler, and would rather prefer a single-file [UMD](https://github.com/umdjs/umd) build that makes `autobind` function available as a global. You can grab the latest version from [unpkg](https://unpkg.com) CDN [here](https://unpkg.com/autobindr), or production-ready minified version(<1kb) - [here](https://unpkg.com/autobindr/dist/autobindr.min.js) and drop `script` tag right into your HTML, although I **don't recommend** you to do so.
 
 
 ### Importing
