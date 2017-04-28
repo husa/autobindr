@@ -15,7 +15,7 @@
     "build": "npm-run-all build:umd build:min test:build",
     "commit:build": "npm run build && git reset HEAD . && git add ./dist && git commit -m 'Update dist'",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "precommit": "npm test"
+    "precommit": "npm-run-all lint test"
   },
   "repository": {
     "type": "git",
