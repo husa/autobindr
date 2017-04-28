@@ -19,20 +19,20 @@ function throwArgErr (name) {
 }
 
 export default function autobind (context = throwArgErr('context'), options = {}) {
-  let {
+  const {
     skip = [],
     only = [],
     pattern = /.*/
   } = options;
 
-  skip = defaultSkip.concat(skip);
+  const exclude = defaultSkip.concat(skip);
 
   const proto = Object.getPrototypeOf(context);
 
   const methods = only.length ? only : Object.getOwnPropertyNames(proto);
 
   methods
-    .filter(m => skip.indexOf(m) === -1)
+    .filter(m => exclude.indexOf(m) === -1)
     .filter(m => pattern.test(m))
     .map(name => ({
       name,
