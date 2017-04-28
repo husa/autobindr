@@ -4,7 +4,7 @@
 	(global.autobind = factory());
 }(this, (function () { 'use strict';
 
-// Skip Reaсt lifecycle methods
+// Skip React lifecycle methods
 var defaultSkip = ['constructor', 'componentWillMount', 'render', 'componentDidMount', 'componentWillReceiveProps', 'shouldComponentUpdate', 'componentWillUpdate', 'componentDidUpdate', 'componentWillUnmount'];
 
 // throw error if @name argument wasn't provided
@@ -23,19 +23,27 @@ function autobind() {
       pattern = _options$pattern === undefined ? /.*/ : _options$pattern;
 
 
-  skip = defaultSkip.concat(skip);
+  var exclude = defaultSkip.concat(skip);
 
   var proto = Object.getPrototypeOf(context);
 
   var methods = only.length ? only : Object.getOwnPropertyNames(proto);
 
   methods.filter(function (m) {
-    return skip.indexOf(m) === -1;
+    return exclude.indexOf(m) === -1;
   }).filter(function (m) {
     return pattern.test(m);
-  }).forEach(function (name) {
-    var _Object$getOwnPropert = Object.getOwnPropertyDescriptor(proto, name),
-        fn = _Object$getOwnPropert.value;
+  }).map(function (name) {
+    return {
+      name: name,
+      fn: Object.getOwnPropertyDescriptor(proto, name).value
+    };
+  }).filter(function (_ref) {
+    var fn = _ref.fn;
+    return typeof fn === 'function';
+  }).forEach(function (_ref2) {
+    var name = _ref2.name,
+        fn = _ref2.fn;
 
     Object.defineProperty(context, name, {
       configurable: true,
