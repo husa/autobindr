@@ -3,7 +3,6 @@
   "version": "1.0.3",
   "description": "Small utility function to automatically bind class methods to instances",
   "main": "dist/autobindr.js",
-  "module": "src/index.js",
   "scripts": {
     "lint": "eslint ./src",
     "test": "cross-env NODE_ENV=test mocha --require babel-register ./test/src.js",
