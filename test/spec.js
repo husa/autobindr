@@ -15,7 +15,7 @@ export default function test (autobind) {
     it('should throw if context is not specified', function () {
       throws(function () {
         autobind();
-      }, Error);
+      }, err => err.message === 'autobindr: "context" argument not specified');
     });
 
     it('should bind all methods', function () {

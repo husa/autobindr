@@ -13,12 +13,12 @@ const defaultSkip = [
   'componentWillUnmount'
 ];
 
-// throw error if @name argument wasn't provided
-function throwArgErr (name) {
-  throw Error(`Argument "${name}" not specified`);
+// throw error if context argument wasn't provided
+function throwArgErr () {
+  throw Error('autobindr: "context" argument not specified');
 }
 
-export default function autobind (context = throwArgErr('context'), options = {}) {
+export default function autobind (context = throwArgErr(), options = {}) {
   const {
     skip = [],
     only = [],
