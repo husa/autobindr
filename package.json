@@ -1,6 +1,6 @@
 {
   "name": "autobindr",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Small utility function to automatically bind class methods to instances",
   "main": "dist/autobindr.js",
   "scripts": {
