@@ -43,6 +43,7 @@ export default function autobind (context = throwArgErr(), options = {}) {
       Object.defineProperty(context, name, {
         configurable: true,
         enumerable: false,
+        writable: true,
         value: fn.bind(context)
       });
     });
