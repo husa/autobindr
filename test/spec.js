@@ -198,5 +198,21 @@ export default function test (autobind) {
       withContext(test.do);
       withContext(test.func);
     });
+
+    it('should set all functions as writable fields by default', function () {
+      class Test {
+        constructor () {
+          this.prop = 10;
+
+          autobind(this);
+        }
+
+        do() {return this.prop;}
+      }
+      const test = new Test;
+
+      const descriptors = Object.getOwnPropertyDescriptor(test, 'do');
+      equal(descriptors.writable, true, 'descriptors writable property should be true');
+    })
   });
 }
