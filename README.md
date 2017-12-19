@@ -9,18 +9,18 @@
 **The fast, easy and convenient way to automatically bind "class" methods to the instance.**
 
 _Go from this_
-```javascript
+```jsx
 <button onClick={this.onButtonClick.bind(this)}>click</button>
 ```
 
 _to this_
-```javascript
+```jsx
 <button onClick={this.onButtonClick}>click</button>
 
 ```
 
 _With simple_
-```javascript
+```js
 autobind(this);
 ```
 
@@ -42,17 +42,17 @@ If you don’t yet use [npm](http://npmjs.com/) or a modern module bundler, and 
 
 ### Importing
 ES6 modules
-```javascript
+```js
 import autobind from 'autobindr';
 ```
 
 CommonJS
-```javascript
+```js
 var autobind = require('autobindr');
 ```
 
 UMD
-```javascript
+```js
 var autobind = window.autobind;
 ```
 ## API
@@ -61,7 +61,7 @@ var autobind = window.autobind;
 
 Automatically binds "class" methods to provided context(usually lexical `this`). To be called in `constructor`.
 
-```javascript
+```js
 constructor () {
   super();
   autobind(this);
@@ -70,27 +70,27 @@ constructor () {
 
 #### `options: {only: Array<string>, skip: Array<string>, pattern: RegExp}`
 * `only: Array<string>` - Array of method names, if provided, only this methods will be bound to the context
-```javascript
+```js
 // bind only "onButtonClick" and "onFormSubmit" methods
 autobind(this, {only: ['onButtonClick', 'onFormSubmit']})
 ```
 
 * `skip: Array<string>` - Array of method names, if provided, this methods will be skipped(not bound to the context)
 
-```javascript
+```js
 // do not bind "onFormSubmit" method
 autobind(this, {skip: ['onFormSubmit']})
 ```
 * `pattern: RegExp` - if provided, regex will be executed on each method name
 
-```javascript
+```js
 // bind all methods starting with "handle" (handleClick, handleFormSubmit, handleDelete, etc.)
 autobind(this, {pattern: /^handle/})
 ```
 
 ## Example
 
-```javascript
+```jsx
 import autobind from 'autobindr';
 
 class Counter extends React.Component {
