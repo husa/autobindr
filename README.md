@@ -104,12 +104,14 @@ class Counter extends React.Component {
   }
 
   onButtonClick () {
-    this.setState(state => ({counter: state.counter + 1}));
+    this.setState(state => ({
+      counter: state.counter + 1
+    }));
   }
 
   render () {
     return (
-      <div class="counter">
+      <div className="counter">
         {this.state.counter}
         <button onClick={this.onButtonClick}>Inc</button>
       </div>
